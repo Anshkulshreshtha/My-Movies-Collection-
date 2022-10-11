@@ -14,7 +14,7 @@ Bootstrap(app)
 # themoviedb api key and url endpoints ~
 SEARCH_URL = "https://api.themoviedb.org/3/search/movie"
 movie_image_url_endpoint = 'https://image.tmdb.org/t/p/w500'
-API_KEY = "e77293ceef476ce14f127f3aba6c79b5"  # my API key
+API_KEY = "YOUR TMDB API_KEY"  # my API key
 
 
 # wtform movie update!
