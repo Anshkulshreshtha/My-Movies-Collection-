@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}My Top  Movies Collection!{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="heading">My Top Movies Collection!</h1>
+  <p class="description">These are my all-time favourite movies.</p>
+
+    {% for movie in movies %}
+  <div class="card" >
+    <div class="front" style="background-image: url('{{movie[7]}}');">
+<!--        <p class="large">{{ movie[5] }}</p>  this is not working properly it will show the ranking based on the ranking provided! -->
+    </div>
+    <div class="back">
+      <div>
+    <div class="title">{{movie[1]}} <span class="release_date">({{movie[2]}})</span></div>
+        <div class="rating">
+            <label>{{movie[4]}}</label>
+          <i class="fas fa-star star"></i>
+        </div>
+          <p class="review">"{{movie[6]}}"</p>
+        <p class="overview">{{movie[3]}}</p>
+
+        <a href="{{ url_for('edit_movie', id=movie[0]) }}" class="button">Update</a>
+        <a href="{{ url_for('delete', num=movie[0]) }}" class="button delete-button">Delete</a>
+
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+</div>
+<div class="container text-center add">
+<a href="{{ url_for('add') }}" class="button">Add Movie</a>
+</div>
+
+{% endblock %}
